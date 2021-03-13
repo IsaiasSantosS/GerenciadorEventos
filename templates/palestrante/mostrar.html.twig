@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Detalhes do palestrante
+{% endblock %}
+
+{% block body %}
+    <a href="{{ path('palestrante_criar') }}">Novo</a>
+    {{ palestrante.nome }}
+    <br/>
+    {{ palestrante.especialidade }}
+    <br/>
+    {{ palestrante.descricao }}
+    <br/>
+
+    <a href="{{ path('palestrante_atualizar', {id:palestrante.id}) }}">Editar</a>
+    <a href="{{ path('palestrante_deletar', {id:palestrante.id}) }}">Apagar</a>
+{% endblock %}
+

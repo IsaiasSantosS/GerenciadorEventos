@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Palestrante{% endblock %}
+
+{% block body %}
+    <a href="{{ path('palestrante_criar') }}">Novo</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Especialidades</th>
+            <th>opções</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for palestrante in palestrantes %}
+        <tr>
+            <td>{{ palestrante.nome }}</td>
+            <td>{{ palestrante.especialidade }}</td>
+            <td>
+                <a href="{{ path('palestrante_mostrar', {id:palestrante.id}) }}">Ver</a>
+                <a href="{{ path('palestrante_atualizar', {id:palestrante.id}) }}">Editar</a>
+                <a href="{{ path('palestrante_deletar', {id:palestrante.id}) }}">Apagar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
