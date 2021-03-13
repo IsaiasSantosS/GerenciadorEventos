@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventosRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,16 @@ class Eventos
      * @ORM\Column(type="text", nullable=true)
      */
     private $descricao;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Palestra::class, mappedBy="eventos", orphanRemoval=false)
+     */
+    private $palestras;
+
+    public function __construct()
+    {
+        $this->palestras = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +98,36 @@ class Eventos
     public function setDescricao(?string $descricao): self
     {
         $this->descricao = $descricao;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Palestra[]
+     */
+    public function getPalestras(): Collection
+    {
+        return $this->palestras;
+    }
+
+    public function addPalestra(Palestra $palestra): self
+    {
+        if (!$this->palestras->contains($palestra)) {
+            $this->palestras[] = $palestra;
+            $palestra->setEventos($this);
+        }
+
+        return $this;
+    }
+
+    public function removePalestra(Palestra $palestra): self
+    {
+        if ($this->palestras->removeElement($palestra)) {
+            // set the owning side to null (unless already changed)
+            if ($palestra->getEventos() === $this) {
+                $palestra->setEventos(null);
+            }
+        }
 
         return $this;
     }

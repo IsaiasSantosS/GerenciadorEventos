@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Cadastro de Palestra
+{% endblock %}
+
+{% block body %}
+    <a href="{{ path('palestras') }}">Listagem</a>
+{{ form(form) }}
+{% endblock %}
+

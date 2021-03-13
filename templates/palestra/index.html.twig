@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Palestras{% endblock %}
+
+{% block body %}
+    <a href="{{ path('palestra_criar') }}">Novo</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Título</th>
+            <th>Data</th>
+            <th>Hora Início</th>
+            <th>Hora Fim</th>
+            <th>Palestrante</th>
+            <th>Opções</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for palestra in palestras %}
+            <tr>
+                <td>{{ palestra.titulo }}</td>
+                <td>{{ palestra.data|date('d/m/Y') }}</td>
+                <td>{{ palestra.horaInicio|date('H:m') }}</td>
+                <td>{{ palestra.horaFim|date('H:m') }}</td>
+                <td>{{ palestra.palestrante.nome }}</td>
+                <td>
+                    <a href="{{ path('palestra_mostrar', {id:palestra.id}) }}">Ver</a>
+                    <a href="{{ path('palestra_atualizar', {id:palestra.id}) }}">Editar</a>
+                    <a href="{{ path('palestra_deletar', {id:palestra.id}) }}">Apagar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
