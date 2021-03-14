@@ -40,7 +40,7 @@ class Eventos
     private $descricao;
 
     /**
-     * @ORM\OneToMany(targetEntity=Palestra::class, mappedBy="eventos", orphanRemoval=false)
+     * @ORM\OneToMany(targetEntity=Palestra::class, mappedBy="evento", orphanRemoval=false)
      */
     private $palestras;
 

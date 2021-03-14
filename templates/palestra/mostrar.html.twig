@@ -5,12 +5,37 @@
 {% endblock %}
 
 {% block body %}
-    <a href="{{ path('palestra_criar') }}">Novo</a>
-    <p>{{ palestra.titulo }}</p>
-    <p>{{ palestra.data|date('d/m/Y') }}</p>
-    <p>{{ palestra.horaInicio|date('H:m') }}</p>
-    <p>{{ palestra.horaFim|date('H:m') }}</p>
-    <p>{{ palestra.palestrante.nome }}</p>
-    <a href="{{ path('palestra_atualizar', {id:palestra.id}) }}">Editar</a>
-    <a href="{{ path('palestra_deletar', {id:palestra.id}) }}">Apagar</a>
+    <h2>Palestra #{{ palestra.id }}</h2>
+    <a href="{{ path('palestras') }}" class="btn btn-sm btn-dark mb-3">Listagem</a>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ palestra.titulo }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Dia: {{ palestra.data|date('d/m/Y') }}
+                ás {{ palestra.horaInicio|date('H:m') }} até: {{ palestra.horaFim|date('H:m') }} </h6>
+            <p class="card-text">{{ palestra.descricao }}</p>
+        </div>
+        <div class="card-header h5 text-center">
+            Palestrante
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="table-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Especialidade</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ palestra.palestrante.nome }}</td>
+                        <td>{{ palestra.palestrante.especialidade }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <a href="{{ path('palestra_atualizar', {id:palestra.id}) }}" class="btn btn-sm btn-primary">Editar</a>
+            <a href="{{ path('palestra_deletar', {id:palestra.id}) }}" class="btn btn-sm btn-danger">Apagar</a>
+        </div>
+    </div>
 {% endblock %}

@@ -3,13 +3,14 @@
 {% block title %}Lista de Palestrante{% endblock %}
 
 {% block body %}
-    <a href="{{ path('palestrante_criar') }}">Novo</a>
-    <table>
-        <thead>
+    <h2>Lista de Palestrantes</h2>
+    <a href="{{ path('palestrante_criar') }}" class="btn btn-sm btn-success mb-3">Novo</a>
+    <table class="table table-hover table-striped table-sm">
+        <thead class="table-dark">
         <tr>
             <th>Nome</th>
             <th>Especialidades</th>
-            <th>opções</th>
+            <th class="text-center">Opções</th>
         </tr>
         </thead>
         <tbody>
@@ -17,10 +18,10 @@
         <tr>
             <td>{{ palestrante.nome }}</td>
             <td>{{ palestrante.especialidade }}</td>
-            <td>
-                <a href="{{ path('palestrante_mostrar', {id:palestrante.id}) }}">Ver</a>
-                <a href="{{ path('palestrante_atualizar', {id:palestrante.id}) }}">Editar</a>
-                <a href="{{ path('palestrante_deletar', {id:palestrante.id}) }}">Apagar</a>
+            <td class="text-center">
+                <a href="{{ path('palestrante_mostrar', {id:palestrante.id}) }}" class="btn btn-sm btn-secondary">Ver</a>
+                <a href="{{ path('palestrante_atualizar', {id:palestrante.id}) }}" class="btn btn-sm btn-primary">Editar</a>
+                <a href="{{ path('palestrante_deletar', {id:palestrante.id}) }}" class="btn btn-sm btn-danger">Apagar</a>
             </td>
         </tr>
         {% endfor %}

@@ -126,17 +126,17 @@ class PalestraController extends AbstractController
     private function criarForm(Palestra $palestra)
     {
         return $form = $this->createFormBuilder($palestra)
-            ->add('titulo', TextType::class, ['label' => 'Título: '])
-            ->add('data', DateType::class, ['label' => 'Data Início'])
-            ->add('hora_inicio', TimeType::class, ['label' => 'Data Fim'])
-            ->add('hora_fim', TimeType::class, ['label' => 'Data Fim'])
-            ->add('descricao', TextareaType::class, ['label' => 'Descrição'])
+            ->add('titulo', TextType::class)
+            ->add('data', DateType::class, ['widget' => 'single_text'])
+            ->add('hora_inicio', TimeType::class, ['widget' => 'single_text'])
+            ->add('hora_fim', TimeType::class, ['widget' => 'single_text'])
+            ->add('descricao', TextareaType::class)
             ->add('evento', EntityType::class, ['choice_label' => 'titulo',
                 'class' => Eventos::class])
             ->add('palestrante', EntityType::class, ['choice_label' => 'nome',
                 'class' => Palestrante::class])
-            ->add('salvar', SubmitType::class, ['label' => 'Salvar'])
-            ->add('limpar', ResetType::class, ['label' => 'Limpar'])
+            ->add('salvar', SubmitType::class)
+            ->add('limpar', ResetType::class)
             ->getForm();
     }
 }

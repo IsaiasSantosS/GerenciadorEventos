@@ -5,6 +5,46 @@
 {% endblock %}
 
 {% block body %}
-    {{ evento.titulo }}
+    <h2>Evento #{{ evento.id }}</h2>
+    <a href="{{ path('eventos') }}" class="btn btn-sm btn-dark mb-3">Listagem</a>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ evento.titulo }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">De: {{ evento.dtInicio|date('d/m/Y') }}
+                até: {{ evento.dtFim|date('d/m/Y') }} </h6>
+            <p class="card-text">{{ evento.descricao }}</p>
+        </div>
+        <div class="card-header h5 text-center">
+            Palestras
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="table-dark">
+                <tr>
+                    <th>Título</th>
+                    <th>Palestrante</th>
+                    <th>Data</th>
+                    <th>Início</th>
+                    <th>Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for paletra in evento.palestras %}
+                    <tr>
+                        <td>{{ paletra.titulo }}</td>
+                        <td>{{ paletra.palestrante.nome }}</td>
+                        <td>{{ paletra.data|date('d/m/Y') }}</td>
+                        <td>{{ paletra.horaInicio|date('H:m') }}</td>
+                        <td>{{ paletra.horaFim|date('H:m') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <a href="{{ path('evento_atualizar', {id:evento.id}) }}" class="btn btn-sm btn-primary">Editar</a>
+            <a href="{{ path('evento_deletar', {id:evento.id}) }}" class="btn btn-sm btn-danger">Apagar</a>
+        </div>
+    </div>
 {% endblock %}
 

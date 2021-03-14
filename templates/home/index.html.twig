@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gerenciador de Eventos{% endblock %}
+
+{% block body %}
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Eventos</h1>
+        <p class="lead">Proximos eventos a ser realizado</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        {% for evento in eventos  %}
+        <div class="col">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 fw-normal">{{ evento.titulo }}</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">
+                        Dia <small class="text-muted">{{ evento.dtInicio|date('d/m/Y') }}</small></h1>
+                    {% for palestra in evento.palestras %}
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><b>Título: </b>{{ palestra.titulo }}</li>
+                        <li><b>Palestrante: </b> {{ palestra.palestrante.nome }}</li>
+                        <li><b>Especialidade: </b> {{ palestra.palestrante.especialidade }}</li>
+                        <li><b>Início: </b>{{ palestra.horaInicio|date('H:m') }} <b>Fim: </b>{{ palestra.horaFim|date('H:m') }}</li>
+                    </ul>
+                    {% endfor %}
+                    <a href="{{ path('evento_mostrar', {id:evento.id}) }}" class="btn btn-lg btn-outline-primary">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row text-center">
+            <div class="col-6 col-md">
+                <h5>Menus</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="link-secondary" href="{{ path('eventos') }}">Home</a></li>
+                    <li><a class="link-secondary" href="{{ path('eventos') }}">Eventos</a></li>
+                    <li><a class="link-secondary" href="{{ path('palestras') }}">Palestras</a></li>
+                    <li><a class="link-secondary" href="{{ path('palestrantes') }}">Palestrantes</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Contatos</h5>
+                <ul class="list-unstyled text-small">
+                    <li>(88) 98811-2233</li>
+                    <li>gerenciadoreventos@geventos.com.br</li>
+                    <li>Rua São francisco 65115-230 Crato-Ce</li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Rede socias</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="link-secondary" href="#">Facebook</a></li>
+                    <li><a class="link-secondary" href="#">Instagram</a></li>
+                    <li><a class="link-secondary" href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+{% endblock %}

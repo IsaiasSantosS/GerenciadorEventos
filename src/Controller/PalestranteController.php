@@ -114,14 +114,11 @@ class PalestranteController extends AbstractController
     private function criarForm(Palestrante $palestrante)
     {
         return $form = $this->createFormBuilder($palestrante)
-            ->add('nome', TextType::class, ['label' => 'Nome'])
-            ->add('especialidade', TextType::class, ['label' => 'Especialidade'])
-            ->add('descricao', TextareaType::class, [
-                'label' => 'Descrição',
-                'required' => false
-            ])
-            ->add('salvar', SubmitType::class, ['label' => 'Salvar'])
-            ->add('limpar', ResetType::class, ['label' => 'Limpar'])
+            ->add('nome', TextType::class)
+            ->add('especialidade', TextType::class)
+            ->add('descricao', TextareaType::class, ['required' => false])
+            ->add('salvar', SubmitType::class)
+            ->add('limpar', ResetType::class)
             ->getForm();
     }
 }

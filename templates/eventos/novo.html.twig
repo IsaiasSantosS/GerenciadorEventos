@@ -5,7 +5,28 @@
 {% endblock %}
 
 {% block body %}
-    {{ form(form) }}
+    <h2>Cadastrar um Evento</h2>
+    <a href="{{ path('eventos') }}" class="btn btn-sm btn-dark mb-3">Listagem</a>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'row'}}) }}
+    <div class="col-md-6 col-lg-12">
+        {{ form_label(form.titulo, 'Título:',{'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.titulo, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="col-md-6 col-lg-12">
+        {{ form_label(form.dt_inicio, 'Data de Início:',{'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.dt_inicio) }}
+    </div>
+    <div class="col-md-6 col-lg-12">
+        {{ form_label(form.dt_fim, 'Data de Término:',{'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.dt_fim) }}
+    </div>
+    <div class="col-md-6 col-lg-12">
+        {{ form_label(form.descricao, 'Descrição:',{'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.descricao, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="col-12 mt-3">
+        {{ form_widget(form.salvar, {'attr': {'class': 'btn btn-sm btn-success'}}) }}
+        {{ form_widget(form.limpar, {'attr': {'class': 'btn btn-sm btn-secondary'}}) }}
+    </div>
+    {{ form_end(form) }}
 {% endblock %}
-
-

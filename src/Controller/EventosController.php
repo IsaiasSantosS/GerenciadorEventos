@@ -113,12 +113,21 @@ class EventosController extends AbstractController
     private function criarForm(Eventos $eventos)
     {
         return $form = $this->createFormBuilder($eventos)
-            ->add('titulo', TextType::class, ['label' => 'Título: '])
-            ->add('dt_inicio', DateTimeType::class, ['label' => 'Data Início'])
-            ->add('dt_fim', DateTimeType::class, ['label' => 'Data Fim'])
-            ->add('descricao', TextareaType::class, ['label' => 'Descrição'])
-            ->add('salvar', SubmitType::class, ['label' => 'Salvar'])
-            ->add('limpar', ResetType::class, ['label' => 'Limpar'])
+            ->add('titulo', TextType::class)
+            ->add('dt_inicio', DateTimeType::class,
+                [
+                    'date_widget' => 'single_text',
+                    'time_widget' => 'single_text'
+                ]
+            )
+            ->add('dt_fim', DateTimeType::class,
+                [
+                    'date_widget' => 'single_text',
+                    'time_widget' => 'single_text'
+                ])
+            ->add('descricao', TextareaType::class)
+            ->add('salvar', SubmitType::class)
+            ->add('limpar', ResetType::class)
             ->getForm();
     }
 }
