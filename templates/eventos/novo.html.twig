@@ -11,14 +11,29 @@
     <div class="col-md-6 col-lg-12">
         {{ form_label(form.titulo, 'Título:',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.titulo, {'attr': {'class': 'form-control'}}) }}
+        {% if form_errors(form.titulo) %}
+            <div class="text-danger">
+                {{ form_errors(form.titulo) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-md-6 col-lg-12">
         {{ form_label(form.dt_inicio, 'Data de Início:',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.dt_inicio) }}
+        {% if form_errors(form.dt_inicio) %}
+            <div class="text-danger">
+                {{ form_errors(form.dt_inicio) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-md-6 col-lg-12">
         {{ form_label(form.dt_fim, 'Data de Término:',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.dt_fim) }}
+        {% if form_errors(form.dt_fim) %}
+            <div class="text-danger">
+                {{ form_errors(form.dt_fim ) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-md-6 col-lg-12">
         {{ form_label(form.descricao, 'Descrição:',{'label_attr': {'class': 'form-label'}}) }}

@@ -23,7 +23,7 @@
                         <li><b>Título: </b>{{ palestra.titulo }}</li>
                         <li><b>Palestrante: </b> {{ palestra.palestrante.nome }}</li>
                         <li><b>Especialidade: </b> {{ palestra.palestrante.especialidade }}</li>
-                        <li><b>Início: </b>{{ palestra.horaInicio|date('H:m') }} <b>Fim: </b>{{ palestra.horaFim|date('H:m') }}</li>
+                        <li><b>Início: </b>{{ palestra.horaInicio|date('H:i') }} <b>Fim: </b>{{ palestra.horaFim|date('H:i') }}</li>
                     </ul>
                     {% endfor %}
                     <a href="{{ path('evento_mostrar', {id:evento.id}) }}" class="btn btn-lg btn-outline-primary">Ver Detalhes</a>

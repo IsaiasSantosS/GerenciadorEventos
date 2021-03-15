@@ -45,7 +45,7 @@ class PalestranteController extends AbstractController
         $form = $this->criarForm($palestrante);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted()){
+        if ($form->isSubmitted() && $form->isValid()){
             $palestrante = $form->getData();
 
             $entityManeger = $this->getDoctrine()->getManager();
@@ -69,7 +69,7 @@ class PalestranteController extends AbstractController
         $form = $this->criarForm($palestrante);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted()){
+        if ($form->isSubmitted() && $form->isValid()){
             $palestrante = $form->getData();
 
             $entityManeger = $this->getDoctrine()->getManager();

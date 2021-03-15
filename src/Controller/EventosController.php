@@ -57,7 +57,7 @@ class EventosController extends AbstractController
         $form = $this->criarForm($eventos);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $evento = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -80,7 +80,7 @@ class EventosController extends AbstractController
         $form = $this->criarForm($evento);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $evento = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
