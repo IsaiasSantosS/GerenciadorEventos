@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\PalestraRepository;
-use App\Validator as Data;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=PalestraRepository::class)
  */
 class Palestra
