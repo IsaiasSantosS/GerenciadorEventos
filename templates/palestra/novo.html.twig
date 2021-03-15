@@ -11,26 +11,56 @@
     <div class="col-md-6 col-lg-12">
         {{ form_label(form.titulo, 'Título:',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.titulo, {'attr': {'class': 'form-control'}}) }}
+        {% if form_errors(form.titulo) %}
+            <div class="text-danger">
+                {{ form_errors(form.titulo) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-md-4 mt-3">
         {{ form_label(form.data, 'Data:',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.data) }}
+        {% if form_errors(form.data) %}
+            <div class="text-danger">
+                {{ form_errors(form.data) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-md-4 mt-3">
         {{ form_label(form.hora_inicio, 'Hora de Início: ',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.hora_inicio) }}
+        {% if form_errors(form.hora_inicio) %}
+            <div class="text-danger">
+                {{ form_errors(form.hora_inicio) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-md-4 mt-3">
         {{ form_label(form.hora_fim, 'Hora de Término: ',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.hora_fim) }}
+        {% if form_errors(form.hora_fim) %}
+            <div class="text-danger">
+                {{ form_errors(form.hora_fim) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-md-6">
         {{ form_label(form.evento, 'Evento: ',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.evento, {'attr': {'class': 'form-select'}}) }}
+        {% if form_errors(form.evento) %}
+            <div class="text-danger">
+                {{ form_errors(form.evento) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-md-6">
         {{ form_label(form.palestrante, 'Palestrante: ',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.palestrante, {'attr': {'class': 'form-select'}}) }}
+        {% if form_errors(form.palestrante) %}
+            <div class="text-danger">
+                {{ form_errors(form.palestrante) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-md-6 col-lg-12">
         {{ form_label(form.descricao, 'Descrição: ',{'label_attr': {'class': 'form-label'}}) }}

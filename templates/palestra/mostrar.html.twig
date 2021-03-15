@@ -11,7 +11,7 @@
         <div class="card-body">
             <h5 class="card-title">{{ palestra.titulo }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Dia: {{ palestra.data|date('d/m/Y') }}
-                ás {{ palestra.horaInicio|date('H:m') }} até: {{ palestra.horaFim|date('H:m') }} </h6>
+                ás {{ palestra.horaInicio|date('H:i') }} até: {{ palestra.horaFim|date('H:i') }} </h6>
             <p class="card-text">{{ palestra.descricao }}</p>
         </div>
         <div class="card-header h5 text-center">

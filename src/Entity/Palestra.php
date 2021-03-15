@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\PalestraRepository;
+use App\Validator as Data;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PalestraRepository::class)
@@ -19,37 +21,45 @@ class Palestra
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Informe o título da palestra")
      */
     private $titulo;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank(message="Informe a data da palestra")
+     * @Assert\GreaterThanOrEqual(value="today", message="Data tem que ser hoje ou posterior a hoje")
      */
     private $data;
 
     /**
      * @ORM\Column(type="time")
+     * @Assert\NotBlank(message="Informe o hora que inícia a palestra")
      */
     private $hora_inicio;
 
     /**
      * @ORM\Column(type="time")
+     * @Assert\NotBlank(message="Informe o hora que termina a palestra")
+     * @Assert\GreaterThanOrEqual(propertyPath="hora_inicio", message="Hora final tem que ser maior que hora de início")
      */
     private $hora_fim;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $descricao;
 
     /**
      * @ORM\ManyToOne(targetEntity=Eventos::class, inversedBy="palestras")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Informe o evento que a palestra será realizada")
      */
     private $evento;
 
     /**
-     * @ORM\OneToOne(targetEntity=Palestrante::class, cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Palestrante::class, inversedBy="palestras")
+     * @Assert\NotBlank(message="Informe quem vai palestrar essa palestra")
      */
     private $palestrante;
 
@@ -79,7 +89,7 @@ class Palestra
         return $this->data;
     }
 
-    public function setData(\DateTimeInterface $data): self
+    public function setData(?\DateTimeInterface $data): self
     {
         $this->data = $data;
 
@@ -91,7 +101,7 @@ class Palestra
         return $this->hora_inicio;
     }
 
-    public function setHoraInicio(\DateTimeInterface $hora_inicio): self
+    public function setHoraInicio(?\DateTimeInterface $hora_inicio): self
     {
         $this->hora_inicio = $hora_inicio;
 
@@ -103,7 +113,7 @@ class Palestra
         return $this->hora_fim;
     }
 
-    public function setHoraFim(\DateTimeInterface $hora_fim): self
+    public function setHoraFim(?\DateTimeInterface $hora_fim): self
     {
         $this->hora_fim = $hora_fim;
 
