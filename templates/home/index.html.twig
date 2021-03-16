@@ -9,30 +9,69 @@
     </div>
 
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-        {% for evento in eventos  %}
         <div class="col">
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                    <h4 class="my-0 fw-normal">{{ evento.titulo }}</h4>
+                    <h4 class="my-0 fw-normal">Eventos</h4>
                 </div>
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title">
-                        Dia <small class="text-muted">{{ evento.dtInicio|date('d/m/Y') }}</small></h1>
-                    {% for palestra in evento.palestras %}
+                        Controle seus <small class="text-muted">Eventos</small></h1>
+
                     <ul class="list-unstyled mt-3 mb-4">
-                        <li><b>Título: </b>{{ palestra.titulo }}</li>
-                        <li><b>Palestrante: </b> {{ palestra.palestrante.nome }}</li>
-                        <li><b>Especialidade: </b> {{ palestra.palestrante.especialidade }}</li>
-                        <li><b>Início: </b>{{ palestra.horaInicio|date('H:i') }} <b>Fim: </b>{{ palestra.horaFim|date('H:i') }}</li>
+                        <li>Título</li>
+                        <li>Data Início</li>
+                        <li>Data Fim</li>
+                        <li>Descrição</li>
                     </ul>
-                    {% endfor %}
-                    <a href="{{ path('evento_mostrar', {id:evento.id}) }}" class="btn btn-lg btn-outline-primary">Ver Detalhes</a>
+
+                    <a href="{{ path('eventos')}}" class="btn btn-lg btn-outline-primary">Ver Detalhes</a>
                 </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
 
+        <div class="col">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 fw-normal">Palestra</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">
+                        Cadastre as <small class="text-muted">Palestra</small></h1>
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Título</li>
+                        <li>Data</li>
+                        <li>Hora de Início</li>
+                        <li>Hora de Término</li>
+                        <li>Descrição</li>
+                    </ul>
+
+                    <a href="{{ path('palestras')}}" class="btn btn-lg btn-outline-primary">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 fw-normal">Palestrante</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">
+                        Diga quem vai <small class="text-muted">Palestrar</small></h1>
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Nome</li>
+                        <li>Especialidade</li>
+                        <li>Descrição</li>
+                    </ul>
+
+                    <a href="{{ path('palestrantes')}}" class="btn btn-lg btn-outline-primary">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row text-center">
