@@ -20,7 +20,7 @@ Também deve fornecer uma API com todos os dados para que possa ser utilizadapor
 - Preenchar as tabelas com dados faker: php bin/console doctrine:fixtures:load
 - iniciar o servidor
 
-#API
+# API
 
 - /api para abrir o gerenciador da API
 
