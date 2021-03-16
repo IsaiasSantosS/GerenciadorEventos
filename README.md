@@ -11,6 +11,19 @@ Também deve fornecer uma API com todos os dados para que possa ser utilizadapor
 - Bootstrap 5.0
 - [Api Platform](https://api-platform.com/docs/distribution/#using-symfony-and-composer)
 
+# Instalação
+
+- clone repositorio
+- composer install
+- configure o .env para o seu banco de dados
+- Criar as tabelas: php bin/console doctrine:migrations:migrate
+- Preenchar as tabelas com dados faker: php bin/console doctrine:fixtures:load
+- iniciar o servidor
+
+#API
+
+- /api para abrir o gerenciador da API
+
 # Desenvolvedor
 __Isaias Santos__
 
