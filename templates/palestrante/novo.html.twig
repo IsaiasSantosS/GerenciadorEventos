@@ -11,10 +11,20 @@
     <div class="col-md-6 col-lg-12">
         {{ form_label(form.nome, 'Nome: ',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.nome, {'attr': {'class': 'form-control'}}) }}
+        {% if form_errors(form.nome) %}
+            <div class="text-danger">
+                {{ form_errors(form.nome) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-md-6 col-lg-12">
         {{ form_label(form.especialidade, 'Especialidade: ',{'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.especialidade, {'attr': {'class': 'form-control'}}) }}
+        {% if form_errors(form.especialidade) %}
+            <div class="text-danger">
+                {{ form_errors(form.especialidade) }}
+            </div>
+        {% endif %}
     </div>
     <div class="col-lg-12">
         {{ form_label(form.descricao, 'Descrição: ',{'label_attr': {'class': 'form-label'}}) }}

@@ -34,8 +34,8 @@
                         <td>{{ paletra.titulo }}</td>
                         <td>{{ paletra.palestrante.nome }}</td>
                         <td>{{ paletra.data|date('d/m/Y') }}</td>
-                        <td>{{ paletra.horaInicio|date('H:m') }}</td>
-                        <td>{{ paletra.horaFim|date('H:m') }}</td>
+                        <td>{{ paletra.horaInicio|date('H:i') }}</td>
+                        <td>{{ paletra.horaFim|date('H:i') }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

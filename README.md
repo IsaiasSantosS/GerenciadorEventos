@@ -7,7 +7,9 @@ Também deve fornecer uma API com todos os dados para que possa ser utilizadapor
 
 - PHP 7.4
 - Framework Symfony 5.2
-- Mysql
+- Mysql 8.0
+- Bootstrap 5.0
+- [Api Platform](https://api-platform.com/docs/distribution/#using-symfony-and-composer)
 
 # Desenvolvedor
 __Isaias Santos__
